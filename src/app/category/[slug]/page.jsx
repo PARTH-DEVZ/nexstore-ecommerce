@@ -6,9 +6,11 @@ import Navbar from '@/app/components/Navbar/Navbar';
 import CategoryNav from '@/app/components/Categories/Categories';
 import { Range } from 'react-range';
 import ProductGrid from '@/app/components/ProductCard/ProductCard';
+import { useSearchParams } from 'next/navigation';
 
 export default function CategoryPage() {
-
+  const searchParams = useSearchParams();
+  const highlightedProductId = searchParams.get('product');
   const pathname = usePathname();
   const [slug, setSlug] = useState('');
   const [products, setProducts] = useState([]);
@@ -81,12 +83,23 @@ export default function CategoryPage() {
       });
 
       const data = await res.json();
-      console.log(data)
-      setMAX(data.maxPrice)
-      setProducts(Array.isArray(data.products) ? data.products : []);
+
+      let fetchedProducts = Array.isArray(data.products) ? data.products : [];
+
+      // 🔥 Move selected product to top
+      if (highlightedProductId) {
+        fetchedProducts = [
+          ...fetchedProducts.filter(p => String(p.id) === String(highlightedProductId)),
+          ...fetchedProducts.filter(p => String(p.id) !== String(highlightedProductId)),
+        ];
+      }
+
+      setProducts(fetchedProducts);
+      setMAX(data.maxPrice);
       setBrands(data.brands || []);
       setAttributes(data.attributes || []);
       setTotalResults(data.totalProducts || 0);
+
     } catch (error) {
       console.error('❌ Error fetching products:', error);
     } finally {

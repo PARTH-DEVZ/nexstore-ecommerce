@@ -280,6 +280,7 @@ const page = () => {
             if (!res.ok) {
                 setErrors({ general: data.error || 'Signup failed' });
                 setLoading(false)
+                setCurrentStep('initial')
                 return;
             }
 

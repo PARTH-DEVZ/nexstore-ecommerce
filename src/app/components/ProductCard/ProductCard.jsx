@@ -167,10 +167,17 @@ const ProductCard = ({ products = [] }) => {
                     {product.stockAvailable && (
                       <div className="flex items-baseline gap-2 mb-3">
                         <span className="text-2xl font-medium text-gray-900">
-                          {formatPrice(
-                            getDiscountedPrice(product.price, product.discountPercent) +
-                            Number(product.variants?.[0]?.additionalPrice ?? 0)
-                          )}
+                          {
+                            formatPrice(
+                              Number(
+                                getDiscountedPrice(
+                                  Number(product.price ?? 0),
+                                  Number(product.discountPercent ?? 0)
+                                )
+                              ) +
+                              Number(product.variants?.[0]?.additionalPrice ?? 0)
+                            )
+                          }
                         </span>
 
                         <span className="text-sm text-gray-500">
