@@ -91,19 +91,21 @@ const Login = () => {
   const sendOtpToEmail = async (email) => {
     const input = email.trim();
 
-    const { data, error } = await supabase.auth.signInWithsOtp({
+    const { error } = await supabase.auth.signInWithOtp({
       email: input,
       options: {
-        shouldCreateUser: true, // 🔥 required for OTP signup
+        shouldCreateUser: true, // creates user if they don't exist
       },
     });
 
     if (error) {
       console.error("OTP Error:", error.message);
-      return { success: false, error: error.message };
+      setErrors({ email: error.message });
+      return { success: false };
     }
 
     setCurrentStep("verify-otp");
+    toast.success("OTP sent to your email!");
     return { success: true };
   };
 
