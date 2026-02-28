@@ -1,9 +1,9 @@
 import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
-export async function POST(req, { params }) {
+export async function POST(req, context) {
   try {
-    const { slug } = params;
+    const { slug } = await context.params ;
     const body = await req.json();
 
     const {
@@ -19,7 +19,7 @@ export async function POST(req, { params }) {
     const parsedFilters = Array.isArray(filters) ? filters : [];
 
     const category = await prisma.categories.findFirst({
-      where: { Slug: slug.toLowerCase() },
+     where: { Slug: slug?.toLowerCase() },
     });
 
     if (!category) {

@@ -2,8 +2,9 @@ import prisma from '@/lib/prisma';
 import { verifyAuth } from '@/lib/middleware/verifyAuth';   
 import { NextResponse } from 'next/server';
 
-export async function GET(req, { params }) {
-  const productId = Number(params.id);
+export async function GET(req, context) {
+   const { id } = await context.params; 
+  const productId = Number(id);
 
   if (!productId) {
     return NextResponse.json({ error: 'Invalid product ID' }, { status: 400 });

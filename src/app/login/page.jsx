@@ -89,14 +89,22 @@ const Login = () => {
 
 
   const sendOtpToEmail = async (email) => {
-    try {
-      const input = email.trim();
-      await supabase.auth.signInWithOtp({ email: input });
-      setCurrentStep("verify-otp");
-    } catch (err) {
-      console.error("Unexpected error sending OTP:", err);
-      return { success: false, error: "Unexpected error" };
+    const input = email.trim();
+
+    const { data, error } = await supabase.auth.signInWithsOtp({
+      email: input,
+      options: {
+        shouldCreateUser: true, // 🔥 required for OTP signup
+      },
+    });
+
+    if (error) {
+      console.error("OTP Error:", error.message);
+      return { success: false, error: error.message };
     }
+
+    setCurrentStep("verify-otp");
+    return { success: true };
   };
 
   const resendOtpToEmail = async () => {
