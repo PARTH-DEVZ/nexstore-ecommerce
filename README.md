@@ -1,36 +1,197 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+NexStore
 
-## Getting Started
+Enterprise-level full-stack e-commerce platform built with production-grade architecture, strict security boundaries, and scalable system design.
 
-First, run the development server:
+🔗 Live Application: https://nexstore-ecommerce-store.vercel.app/
 
-```bash
+🔗 Repository: https://github.com/PARTH-DEVZ/nexstore
+
+🔗 Portfolio Page: https://parthdevz.vercel.app/project/nexstore
+
+📌 Overview
+
+NexStore is a high-performance marketplace simulation inspired by real-world enterprise commerce platforms.
+
+The system is architected around multi-role access control, secure payment workflows, and a scalable backend designed for high concurrency and future extensibility.
+
+The project emphasizes:
+
+Clean system design
+
+Strong authorization boundaries
+
+Production-ready architecture
+
+Performance-first engineering
+
+🛠 Tech Stack
+Frontend
+
+Next.js (App Router)
+
+React
+
+TypeScript
+
+Tailwind CSS
+
+Redux Toolkit
+
+Backend
+
+Node.js
+
+Prisma ORM
+
+PostgreSQL (Supabase)
+
+Authentication & Security
+
+JWT-based authentication
+
+OTP verification workflow
+
+Strict Role-Based Access Control (RBAC)
+
+Protected API routes with enforced authorization checks
+
+Payments
+
+Stripe integration with secure multi-step checkout validation
+
+Deployment
+
+Vercel (Frontend + API)
+
+Supabase (Managed PostgreSQL)
+
+✨ Core Capabilities
+🔐 Secure Authentication System
+
+Enterprise-grade JWT authentication
+
+OTP-based verification
+
+Role-isolated access layers (Admin / Seller / Customer)
+
+Server-side authorization enforcement
+
+👥 Multi-Role Architecture
+
+Dedicated dashboards for:
+
+Admin
+
+Seller
+
+Customer
+
+Permission-isolated workflows
+
+Controlled administrative operations
+
+🛒 Commerce Engine
+
+Dynamic product catalog
+
+Optimized filtering and search
+
+Persistent cart (Redux Toolkit)
+
+Secure Stripe checkout flow
+
+Order lifecycle management
+
+User account & history dashboards
+
+🏪 Admin & Seller Systems
+
+Full administrative control over:
+
+Users
+
+Sellers
+
+Products
+
+Orders
+
+Platform insights
+
+Seller dashboard with:
+
+Inventory management
+
+Order tracking
+
+Performance monitoring
+
+⚡ Performance & Scalability
+
+Optimized relational schema (Prisma)
+
+Efficient query handling
+
+Modular component architecture
+
+Clean separation of UI, logic, and data layers
+
+Fully responsive, performance-optimized interface
+
+🧠 Architecture Highlights
+
+Modular Next.js App Router structure
+
+Clear separation between presentation, business logic, and data access
+
+Centralized state management (Redux Toolkit)
+
+Secure payment confirmation before order persistence
+
+Environment-based configuration for production readiness
+
+📂 Project Structure
+/app            → Routes & API handlers
+/components     → Reusable UI components
+/lib            → Utilities & configuration
+/prisma         → Database schema & migrations
+/store          → Global state management
+/public         → Static assets
+⚙️ Local Setup
+git clone https://github.com/your-username/nexstore
+cd nexstore
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔑 Environment Variables
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a .env file in the root directory:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+DATABASE_URL=
+NEXTAUTH_SECRET=
+STRIPE_SECRET_KEY=
+STRIPE_PUBLIC_KEY=
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ensure Stripe webhooks and Supabase credentials are properly configured.
 
-## Learn More
+🚀 Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+AI-powered product recommendations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Advanced analytics dashboards
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Performance benchmarking under load
 
-## Deploy on Vercel
+CI/CD pipeline integration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Microservices-based backend expansion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+👨‍💻 Author
+
+Parth Kulkarni
+Full-Stack Developer focused on scalable systems, secure architecture, and AI-driven engineering.
+
+📄 License
+
+Developed for portfolio and educational purposes.
